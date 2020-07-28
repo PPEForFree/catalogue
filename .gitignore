@@ -1,2 +1,7 @@
 # Local Netlify folder
 .netlify
+
+# Yarn files
+.yarn/unplugged
+.yarn/build-state.yml
+.pnp.*
