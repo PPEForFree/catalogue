@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "allowJs": false,
+    "module": "esnext",
+    "target": "es6",
+    "lib": ["es6"],
+    "strict": true
+  },
+  "include": [
+    "functions/**/*"
+  ]safldksndflkn
+}

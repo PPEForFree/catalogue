@@ -1,37 +1,31 @@
-import {MongoClient} from 'mongodb';
+import {MongoClient} from "mongodb";
 
-
-const getDocuments = async function() {
+const getDocuments = async () => {
   const client = new MongoClient(process.env.MONGO_DB_URL);
 
   try {
     await client.connect();
-    const data = client
-      .db("initiatives")
-      .collection("documents")
-      .find({})
-      .toArray();
+    const data = client.db("initiatives").collection("documents").find({}).toArray();
     return data;
   } catch (err) {
     console.error(err);
   } finally {
     await client.close();
   }
-}
+};
 
-
-exports.handler = async function(event, context, callback) {
+exports.handler = async (event, context, callback) => {
   try {
     const data = await getDocuments();
     return {
       statusCode: 200,
-      body: JSON.stringify(data)
+      body: JSON.stringify(data),
     };
   } catch (err) {
     console.error(err); // output to netlify function log
     return {
       statusCode: 500,
-      body: JSON.stringify({ msg: err.message })
+      body: JSON.stringify({msg: err.message}),
     };
   }
-}
+};
